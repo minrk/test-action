@@ -7,6 +7,8 @@ async function run() {
   console.log(`Got token: ${token.slice(0, 10)}...`);
   // const env = core.getInput("env");
   // console.log(`Got env: ${env}`);
+  console.log("github context:");
+  console.log(github.context);
 
   console.log("process env:");
   console.log(process.env);
