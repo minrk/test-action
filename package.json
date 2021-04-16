@@ -1,0 +1,24 @@
+{
+  "name": "test-action",
+  "version": "1.0.0",
+  "description": "debug action",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minrk/test-action.git"
+  },
+  "keywords": [],
+  "author": "Min RK",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/minrk/test-action/issues"
+  },
+  "homepage": "https://github.com/minrk/test-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0"
+  }
+}

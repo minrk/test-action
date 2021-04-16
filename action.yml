@@ -1,0 +1,15 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  token:
+    default: ${{ github.token }}
+  secret:
+    default: ${{ secrets.TEST_SECRET }}
+outputs:
+  token:
+    description: "The token we ran with"
+  secret:
+    description: "The secret we ran with"
+runs:
+  using: 'node12'
+  main: 'index.js'
