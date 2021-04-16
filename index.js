@@ -14,7 +14,7 @@ async function run() {
   const octokit = github.getOctokit(token);
 
   try {
-    const { data, headers } = await octokit.request("/user");
+    const { data, headers } = await octokit.request("/");
     console.log(data);
     console.log(headers);
   } catch (e) {
