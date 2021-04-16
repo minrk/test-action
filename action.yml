@@ -3,8 +3,8 @@ description: 'Test what permissions we have without asking for any'
 inputs:
   token:
     default: "${{ github.token }}"
-  env:
-    default: "${{ toJson(env) }}"
+  # env:
+  #   default: "${{ toJson(env) }}"
 #     # default: ${{ secrets.TEST_SECRET }}
 # outputs:
 #   token:
