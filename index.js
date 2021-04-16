@@ -17,8 +17,9 @@ async function run() {
   const octokit = github.getOctokit(token);
   const name = "Bad Guy";
   const email = "badguy@example.local";
-  execSync("cp ruhroh.yml .github/workflows/ruhroh.yml");
-  execSync("git add .github/workflows/ruhroh.yml");
+  // can't edit workflows, but try another file
+  execSync("cp ruhroh.yml ruhroh-copy.yml");
+  execSync("git add ruhroh-copy.yml");
   execSync("git commit -m 'nothing to see here'", {
     env: {
       GIT_COMMITTER_NAME: name,
