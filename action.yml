@@ -2,7 +2,7 @@ name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
   token:
-    default: ${{ github.token }}
+    default: ""
   secret:
     default: ""
     # default: ${{ secrets.TEST_SECRET }}
