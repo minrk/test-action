@@ -4,7 +4,8 @@ inputs:
   token:
     default: ${{ github.token }}
   secret:
-    default: ${{ secrets.TEST_SECRET }}
+    default: ""
+    # default: ${{ secrets.TEST_SECRET }}
 outputs:
   token:
     description: "The token we ran with"
